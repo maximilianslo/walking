@@ -1,3 +1,9 @@
+<?php
+/**
+* @var string $content_view
+ **/
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
