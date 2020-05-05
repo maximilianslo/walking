@@ -1,0 +1,8 @@
+{
+  "name": "slovenberg/walking",
+  "require": {
+    "twbs/bootstrap": "^4.3",
+    "ext-mysqli": "*",
+    "vlucas/phpdotenv": "^3.4"
+  }
+}

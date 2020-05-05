@@ -1,0 +1,8 @@
+const gulp = require('gulp')
+const styles = require('./gulp/tasks/sass')
+const bootstrap = require('./gulp/tasks/bootstrap')
+const bootstraph = require('./gulp/tasks/bootstraph')
+module.exports.sass = gulp.series(styles)
+module.exports.bootstrap = gulp.series(bootstrap)
+module.exports.bootstraph=gulp.series(bootstraph)   
+module.exports.deploy=gulp.series(styles, bootstrap, bootstrap)
