@@ -26,11 +26,14 @@ class Route
         $action_name = 'action_' . $action_name;
 
 
+
+
         $model_file = $model_name. '.php';
         $model_path = "application/models/" . $model_file;
         if (file_exists($model_path)) {
             include "application/models/" . $model_file;
         }
+
 
         $controller_file = $controller_name. '.php';
         $controller_path = "application/controllers/" . $controller_file;

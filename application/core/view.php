@@ -3,7 +3,7 @@
  {
      //public $template_view; // общий вид по умолчанию
 
-     function generate($content_view, $template_view)
+     function generate($content_view, $help_css)
      {
          /*
          if(is_array($data)) {
@@ -11,6 +11,6 @@
          }
          */
 
-         include 'application/views/'.$template_view;
+         include 'application/views/template_view.php';
      }
  }
