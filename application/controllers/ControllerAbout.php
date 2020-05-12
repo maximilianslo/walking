@@ -5,4 +5,7 @@ class ControllerAbout extends Controller
     {
         $this->view->generate('main_view.php','build/css/helpers/about.css');
     }
+    function action_name() {
+    	echo "Ты гавно";
+    }
 }

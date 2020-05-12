@@ -7,5 +7,3 @@ package-lock.json
 vendor/
 build/css
 .env
-build/js/jquery
-build/js/bootstrap-scripts

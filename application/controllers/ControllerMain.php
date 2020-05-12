@@ -1,4 +1,4 @@
-s<?php
+<?php
 class ControllerMain extends Controller
 {
     function action_index()

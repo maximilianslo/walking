@@ -7,7 +7,8 @@
 <head>
     <meta charset="utf-8">
     <title>Главная</title>
-    <link rel="stylesheet" type="text/javacript" href="/build/js/jquery/jquery.js">
+    <script type="text/javascript" src="/build/js/jquery/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/build/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/build/css/bootstrap/bootstrap-grid.css">
     <link rel="stylesheet" type="text/css" href="/build/css/styles.min.css">

@@ -6,7 +6,7 @@ class Route
     static function start()
     {
 
-        $controller_name = 'Main';
+        $controller_name = 'Towns';
         $action_name = 'index';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
@@ -14,17 +14,42 @@ class Route
 
         if (!empty($routes[1])) {
             $controller_name = ucfirst($routes[1]);
-        }
 
-
-        if (!empty($routes[2])) {
-            $action_name = ucfirst($routes[2]);
+            if($routes[1]=='towns') {
+                $vartown=strtolower($routes[2]);
+                if(!empty($routes[3])) {
+                    $action_name = ucfirst($routes[3]).'Town';
+                }
+                else {
+                    if (!empty($routes[2])) {
+                        $action_name = 'Town';
+                    }
+                }
+            }
+            elseif($routes[1]=='admin') {
+                if(!empty($routes[3])) {
+                    $vartown=strtolower($routes[2]);
+                    $action_name = ucfirst($routes[3]).'Admin';
+                }
+                else {
+                    if (!empty($routes[2])) {
+                        $vartown=strtolower($routes[2]);
+                        $action_name = 'Admin';
+                    } else {
+                        $action_name = 'index';
+                    }
+                }
+            } 
+            else {
+                if (!empty($routes[2])) {
+                        $action_name = ucfirst($routes[2]);
+                }
+            }
         }
 
         $model_name = 'Model' . $controller_name;
         $controller_name = 'Controller' . $controller_name;
         $action_name = 'action_' . $action_name;
-
 
 
 
@@ -48,7 +73,11 @@ class Route
         $action = $action_name;
 
         if (method_exists($controller, $action)) {
-            $controller->$action();
+            if(($routes[1]=='towns' or $routes[1]=='admin') and isset($routes[2])) {
+                $controller->$action($vartown);
+            } else {
+                $controller->$action();
+            } 
         } else {
             Route::ErrorPage404();
         }
