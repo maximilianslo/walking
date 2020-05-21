@@ -61,5 +61,79 @@ echo "Размер файла не должен превышать 512Кб";
 	}
 }
 
+if(!empty($_POST['update_foto'])) {
+	$j=0;
+	$nim=0;
+
+	//
+	for($i=0;$i<count($_FILES['arr-foto2']['name']);$i++) {
+		if(!empty($_FILES['arr-foto2']['name'][$i])) {
+			$nim++;
+		}
+	}
+	while(empty($_FILES['arr-foto2']['name'][$j])) {
+		$j++;
+	}
+	//
+	 if ($nim==1) {
+
+		//первый свитч
+	switch ($j) {
+		case (0):
+			$row_name='story_foto';
+			break;
+		case (1):
+			$row_name='identity_foto';
+			break;
+		case (2):
+			$row_name='locals_foto';
+			break;
+		case (3):
+			$row_name='best_foto';
+			break;
+
+		case (4):
+			$row_name='cost_foto';
+			break;
+		
+		default:
+			break;
+			// конец свитч
+	}
+		require_once '/var/www/walking/application/models/admin/ModelUpdate.php';
+		$update_foto=new ModelUpdate('towns_about');
+
+
+		$uploaddir = $_SERVER['DOCUMENT_ROOT']."/images/";	
+		$apend=date('YmdHis').rand(100,1000).'.jpg'; 
+		$uploadfile = "$uploaddir$apend"; 
+
+if(($_FILES['arr-foto2']['type'][$j] == 'image/gif' || $_FILES['arr-foto2']['type'][$j] == 'image/jpeg' || $_FILES['arr-foto2']['type'][$j] == 'image/png') && ($_FILES['arr-foto2']['size'][$j] != 0 and $_FILES['arr-foto2']['size'][$j]<=5120000)) { 
+	if (move_uploaded_file($_FILES['arr-foto2']['tmp_name'][$j], $uploadfile)) { 
+	     echo "Файл загружен. Путь к файлу: <b>http:/yoursite.ru/".$uploadfile."</b>"; 
+	} else {
+	     echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
+	} 
+} else {
+   echo "Файл не загружен, вернитеcь и попробуйте еще раз";
+} 
+			$update_foto->id=$delete_id;
+				$update_foto->{$row_name}=$uploadfile;
+				$update_foto->update();
+}
+}
+
+	   	    if (!empty($_POST['delete'])) {
+	echo "Обновите страницу. Данные успешно удалены";
+	$button = new ModelBaseAdminTownsAbout('towns_about');
+	$select_delete = array(
+    'where' => "id = '$id_num'" // условие
+);
+	$button->deleteBySelect($select_delete);
+	unset($_POST);
+}
+
+
+
 unset($_POST);
 ?>

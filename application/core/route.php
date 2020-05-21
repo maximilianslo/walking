@@ -18,6 +18,7 @@ class Route
             if($routes[1]=='towns') {
                 $vartown=strtolower($routes[2]);
                 if(!empty($routes[3])) {
+                    $vartown=strtolower($routes[2]);
                     $action_name = ucfirst($routes[3]).'Town';
                 }
                 else {

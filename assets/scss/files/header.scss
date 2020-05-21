@@ -1,0 +1,72 @@
+.theme-main a {
+     display: block; /* Ссылка как блочный элемент */
+     text-align: center; /* Выравнивание по центру */
+     	padding: 7px 15px;
+	margin: 35px;
+ }
+
+.main {
+	height: 100%;
+}
+.background-rar {
+	height: 125px;
+	width: 100%;
+
+}
+
+.topics {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr; 
+}
+
+.theme-main {
+		@extend %themes;
+}
+%themes {
+	display: inline-block;
+	@include header-text-1(18px);
+	text-align: center;	
+}
+.theme-main a:hover {
+	background-color: #000;
+	color: #fff;
+	@extend %themes;
+}
+.logo {
+	height: 100px;
+	margin-top: 25px;
+}
+.hr-shelf {
+	margin: -30px auto 10px;
+	padding: 0;
+	height: 50px;
+	border: none;
+	border-bottom: 1px solid #1f1209;
+	box-shadow: 0 20px 20px -20px #333;
+	width: 95%;
+}
+.main-text {
+	text-align: center;
+	margin-top: 70px;
+		@include header-text-1(30px);
+}
+.description {
+	margin-top: 50px;
+		@include header-text-1(21px);
+}
+.title-about {
+	margin: 50px 0;
+	@include header-text-1(26px);
+}
+.text-place {
+	@include header-text-1(21px);
+
+}
+.hr-shelf-mini {
+	margin: 30px auto 30px;
+	padding: 0;
+	height: 50px;
+	border: none;
+	border-bottom: 2px solid #1f1209;
+	width: 100%;
+}

@@ -1,0 +1,67 @@
+.main-header {
+	text-align: center;
+	margin-top: 70px;
+		@include header-text-1(36px);
+}
+.main-header-desc {
+	text-align: center;
+	margin-top: 40px;
+		@include header-text-1(24px);
+}
+.main-header-desc {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+		@include header-text-1(28px);
+}
+.list-main {
+	text-align: center;
+	margin-bottom: 40px;
+		@include header-text-1(30px);
+}
+.main-header-desc {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+		@include header-text-1(22px);
+}
+.theme-town {
+	letter-spacing: 10px;
+	text-align: center;
+	margin: 40px auto 0;
+	width: 25%;
+	height: 70px;
+	text-align: center;
+	display: inline-block;
+	@include header-text-1(24px);
+	border: 3px solid black;
+	color: #000 !important;
+}
+.theme-town a {
+     display: block; /* Ссылка как блочный элемент */
+     text-align: center; /* Выравнивание по центру */
+     height: 100%; /* Высота на весь слой */
+     	padding: 20px;
+ }
+
+.theme-town a:hover {
+		-moz-animation: beautiful 10s ease-out 500ms; 
+}
+
+@keyframes beautiful{
+	0% {
+		transform: scale(1);
+		background-color: white;
+		color: #000 !important;
+	}
+	20% {
+	background-color: #000;
+	color: #fff;
+	transform: scale(1.1,1.1);
+	}
+		100% {
+	background-color: #000;
+	color: #fff;
+	transform: scale(1.1,1.1);
+	}
+}

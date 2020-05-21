@@ -1,0 +1,48 @@
+.mini-gallery {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	margin: 40px auto; 
+}
+.block-photos {
+	width: 400px;
+	margin-bottom: 40px;
+	padding: 0 15px 0 15px;
+}
+.sight {
+	@include header-text-1(28px);
+	margin-top: 30px;
+		margin-bottom: 40px;
+	margin-left: 40px;
+}
+.sight-info {
+	@include header-text-1(17px);
+	margin-top: 30px;
+		margin-left: 40px;
+}
+.little-attantion {
+	@include header-text-1(16px);
+	text-align: center;
+}
+
+.sight-title-discription {
+		margin: 20px auto 20px 40px;
+		@extend %title-sight;
+}
+.sight-title-place {
+		margin-top: 60px; 
+		margin-bottom: 20px; 
+		text-align: center;
+		@extend %title-sight;
+}
+
+%title-sight {
+	@include header-text-1(22px);
+}
+
+.main-info {
+	margin: 30px auto 10px 40px;
+	color: grey;
+		@include header-text-1(15px);
+
+}

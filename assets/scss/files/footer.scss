@@ -1,0 +1,32 @@
+.footer-topics {
+	margin-top: 40px; 
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr; 
+}
+.footer-row {
+		margin-top: 35px;
+	height: 100%;
+}
+.footer {
+	margin-top: 30px; 
+	height: 90px;
+	width: 100%;
+}
+.footer-text {
+	@include header-text-1(18px);
+	text-align: center;	
+}
+.footer-mini-text {
+	margin-top: 20px;
+	@include header-text-1(16px);
+	text-align: center;	
+}
+.hr-shelf-footer {
+	margin: 70px auto 10px;
+	padding: 0;
+	height: 50px;
+	border: none;
+	border-bottom: 1px solid #1f1209;
+	box-shadow: 0 20px 20px -20px #333;
+	width: 95%;
+}

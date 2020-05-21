@@ -2,15 +2,23 @@
 $select = array(
     'where' => 'id > 0', // условие
 );
-$save= new ModelBaseMain($fortable1,$select);
-$rows=$save->getAllRows();
-$town=$_POST['town'];
-$submit=$_POST['sub'];
-if(!empty($submit)) {
-	$save->named=$town;
+
+
+if(!empty($_POST['sub'])) {
+	$save->named=$_POST['town'];
 	$save->save();
+		unset($_POST);
 }
-unset($_POST);
+	  if (!empty($_POST['delete-first'])) {
+	echo "Обновите страницу. Данные успешно удалены";
+	$button = new ModelBaseMain('alltowns');
+	$id=$_POST['delete-first'];
+	$select_delete = array(
+    'where' => "id = '$id'" // условие
+);
+	$button->deleteBySelect($select_delete);
+	unset($_POST);
+}
 
 
 
@@ -35,9 +43,7 @@ echo "<table class='blueTable'>
 	   echo "<td>";
 	   echo $movie['name'];
 	   echo "</td>";
-	   echo "<td>";
-	   echo "<div>Удаление</div>";
-	   echo "</td>";
+	   echo "<td><div><form method='post' action='' ><input type='submit' name='delete-first' value='".$movie['id']."'></form>Удалить</div></td>";
 	   echo "</tr>";
 	}
 echo "</tbody>

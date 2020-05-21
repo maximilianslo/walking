@@ -6,13 +6,14 @@ class ControllerAdmin extends Controller
 	public $classname;
 	public $nametown;
 	public $namecontroller;
+	public $template='template_view.php';
     function action_index()
     {
     	require_once('application/models/admin/ModelBaseMain.php');
     	$tablename='alltowns';
     	$this->database=new ModelBaseMain($tablename);
         $this->database->createTables($tablename);
-        $this->view->generate('main_admin.php','build/css/helpers/main.css',$tablename,'Main');
+        $this->view->generate($this->template,'main_admin.php','build/css/helpers/main.css',$tablename,'Main');
 
     }
 
@@ -32,7 +33,7 @@ class ControllerAdmin extends Controller
 		$classDB='ModelBaseAdmin'.$this->classname;
 		$this->database=new $classDB($this->classname);
 		$this->database->createTables($this->classname,$this->nametown);
-		$this->view->generate('admin_gallery.php','build/css/helpers/about.css',$this->classname,$this->nametown);
+		$this->view->generate($this->template,'admin_gallery.php','build/css/helpers/about.css',$this->classname,$this->nametown);
     }
     function action_sightsAdmin($name_town) {
 		$this->namecontroller();
@@ -43,7 +44,7 @@ class ControllerAdmin extends Controller
 		$classDB='ModelBaseAdmin'.$this->classname;
 		$this->database=new $classDB($this->classname);
 		$this->database->createTables($this->classname,$this->nametown);
-		$this->view->generate('admin_sights.php','build/css/helpers/about.css',$this->classname,$this->nametown);
+		$this->view->generate($this->template,'admin_sights.php','build/css/helpers/about.css',$this->classname,$this->nametown);
     }
     function action_aboutAdmin($name_town) {
 		$this->namecontroller();
@@ -53,7 +54,7 @@ class ControllerAdmin extends Controller
 		$this->nametown=$name_town;
 		$classDB='ModelBaseAdmin'.$this->classname;
 		$this->database=new $classDB($this->classname);
-		$this->view->generate('admin_about.php','build/css/helpers/about.css','towns_about',$this->nametown);
+		$this->view->generate($this->template,'admin_about.php','build/css/helpers/about.css','towns_about',$this->nametown);
     }
 
     function action_Admin($name_town) {
@@ -62,7 +63,7 @@ class ControllerAdmin extends Controller
 		$this->nametown=$name_town;
 		$classDB='ModelBaseAdmin'.$this->classname;
 		$this->database=new $classDB($this->classname);
-		$this->view->generate('admin_towns.php','build/css/helpers/about.css',$this->classname,$this->nametown);
+		$this->view->generate($this->template,'admin_towns.php','build/css/helpers/about.css',$this->classname,$this->nametown);
     }
 
 }

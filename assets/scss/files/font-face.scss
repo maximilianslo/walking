@@ -1,0 +1,15 @@
+$fontTextPath: '../fonts';
+$MainFont: 'MainFont';
+
+
+@mixin font-face1($fontFamily,$fileName,$fontPath: $fontTextPath){
+  @font-face {
+    font-family: $fontFamily;
+    src: local('^'),
+    url('#{$fontPath}/#{$fileName}.ttf') format('truetype');
+        font-weight: normal;
+    font-style: normal;
+  }
+}
+
+@include font-face1($MainFont, $MainFont);

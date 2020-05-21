@@ -14,6 +14,8 @@ if($check->getOneRow()==false) {
 $save= new ModelBaseAdminTownsAbout('towns_about',$select);
 if($save->getOneRow()==true) {
 	$all=$save->getAllRows();
+	$id_num=$all[0]['id'];
+			
 echo "<table class='blueTable'>
 <thead>
 <tr>
@@ -33,35 +35,34 @@ echo "<table class='blueTable'>
 </thead>
 <tbody>
 ";				
-	foreach ( $all as $movie ) {
 	   echo "<tr>";
-	   echo "<td><div contenteditable='true'>".$movie['description']."</div></td>";
-	   echo "<td>".$movie['story']."</td>";
-	   echo "<td>".$movie['story_foto']."</td>";
-	   echo "<td>".$movie['identity']."</td>";
-	   echo "<td>".$movie['identity_foto']."</td>";
-	   echo "<td>".$movie['locals']."</td>";
-	   echo "<td>".$movie['locals_foto']."</td>";
-	   echo "<td>".$movie['best']."</td>";
-	   echo "<td>".$movie['best_foto']."</td>";
-	   echo "<td><div data-id='".$movie['id']."' class='edit_admin_about' id='cost' contenteditable>".$movie['cost']."</td>";
-	   echo "<td>".$movie['cost_foto']."</td>";
-	   echo "<td>";
-	   echo "<div><form method='post' action='' ><input type='submit' name='delete' value='1'></form>Удаление</div>";
-	   echo "</td>";
+			for($i=0;$i<count($all);$i++) {
+				foreach ($all[$i] as $key => $value) {
+					if(is_string($key) and $key!='id' and $key!='name') {
+					echo "<td><div style='height: 350px; width: 250px;' class='edit_admin_about' data-id='".$id_num."' class='edit_admin_about' id='".$key."' contenteditable>".$value."</div></td>";
+					}
+				}
+			}
+	   echo "<td><div><form method='post' action='' ><input type='submit' name='delete' value='Удалить'></form>Удаление</div></td></tr>";
+	   echo "<form method='post' action='' id='new-foto' enctype = 'multipart/form-data'></form>";
+	   echo "<tr>";
+	   echo "<td></td>";
+	   echo "<td></td>";
+	   echo "<td><input type='file' name='arr-foto2[]' form='new-foto'></td>";
+	   echo "<td></td>";
+	   echo "<td><input type='file' name='arr-foto2[]' form='new-foto'></td>";
+	   echo "<td></td>";
+	   echo "<td><input type='file' name='arr-foto2[]' form='new-foto'></td>";
+	   echo "<td></td>";
+	   echo "<td><input type='file' name='arr-foto2[]' form='new-foto'></td>";
+	   echo "<td></td>";
+	   echo "<td><input type='file' name='arr-foto2[]' form='new-foto'></td>";
+	   echo "<td><input type='submit' name='update_foto' form='new-foto' value='Удалить'></td>";
 	   echo "</tr>";
-	   $delete_id=$movie['id'];
-	}
+	   include "form_about.php";
 echo "</tbody>
 	  </table>";
-	  if (!empty($_POST['delete'])) {
-	echo "Обновите страницу. Данные успешно удалены";
-	$select_delete = array(
-    'where' => "id = $delete_id", // условие
-);
-	$button = new ModelBaseAdminTownsAbout('towns_about');
-	$button->deleteBySelect($select_delete);
-}
+
 
 } else {
 include "form_about.php";
@@ -73,30 +74,40 @@ include "form_about.php";
 <br>
 <br>
 <form method="post" action="" enctype = 'multipart/form-data'>
-	<input type="text" name="arr[]">
-	<br>
-	<br>
-	<input type="text" name="arr[]">
-	<br>
-	<input type="file" name="arr-foto[]">
-	<br>
-	<input type="text" name="arr[]">
-	<br>
-	<input type="file" name="arr-foto[]">
-	<br>
-	<input type="text" name="arr[]">
-	<br>
-	<input type="file" name="arr-foto[]">
-	<br>
-	<input type="text"name="arr[]">
-	<br>
-	<input type="file" name="arr-foto[]">
-	<br>
-	<input type="text" name="arr[]">
-	<br>
-	<input type="file" name="arr-foto[]">
-	<br>
-	<input type="submit" name="sub">
+	<div class="form-about">
+<?
+
+$towns_names= array('Введите описание города',
+					'Введите краткую историю города',
+					'Введите описание колорита',
+					'Введите описание жителей', 
+					'Введите описание лучших мест',
+					'Введите описание цен'
+				);
+$towns_photos = array(
+				'Прикрепите фотографию для краткой истории города',
+				'Прикрепите фотографию для колорита',
+				'Прикрепите фотографию для жителей',
+				'Прикрепите фотографию для лучших мест',
+				'Прикрепите фотографию для цен'
+				);
+
+	for ($i=0;$i<6;$i++) {
+		echo '	<div class="part-form-about">
+	<h2>'.$towns_names[$i].'</h2>
+	<textarea rows="30" cols="50" name="arr[]"></textarea>
+	</div> ';
+	}
+	for($i=0;$i<5;$i++) {
+	echo '<div class="part-form-about">
+	<h3>'.$towns_photos[$i].'</h3>
+	<input  class="form-control" type="file" name="arr-foto[]">
+	</div> ';
+	}
+
+?>
+	<input class="btn btn-primary" type="submit" name="sub">
+</div>
 </form>
 <?
 }

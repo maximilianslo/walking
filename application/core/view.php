@@ -5,7 +5,7 @@
     function generate_usually($content_view, $help_css) {
         include 'application/views/template_view.php';
     }
-     function generate($content_view, $help_css, $fortable1,$name_town)
+     function generate($template, $content_view, $help_css, $fortable1,$name_town)
      {
          /*
          if(is_array($data)) {
@@ -13,6 +13,6 @@
          }
          */
 
-         include 'application/views/template_view.php';
+         include 'application/views/'.$template;
      }
  }

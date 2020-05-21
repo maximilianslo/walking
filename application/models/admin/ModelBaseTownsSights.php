@@ -1,4 +1,4 @@
-<?php
+щ<?php
 
 class ModelBaseAdminTownsSights extends ModelBase {
 	public $sights_name;
@@ -10,8 +10,7 @@ class ModelBaseAdminTownsSights extends ModelBase {
 	public $cost;
 	public $place;
 	public $map;
-	public $description;
-	public $named;
+
 
 			public function createTables($classname,$townname) {
 			try {
@@ -20,15 +19,15 @@ class ModelBaseAdminTownsSights extends ModelBase {
 				//таблица about
 				$executing="CREATE Table IF NOT EXISTS `".$table."` (
 					`id` INT(10) PRIMARY KEY AUTO_INCREMENT,
-			        `sights_name` VARCHAR(300) NOT NULL collate utf8_unicode_ci default '',
+			        `sights_name` VARCHAR(3000) NOT NULL collate utf8_unicode_ci default '',
         			`pic1` VARCHAR(300) NOT NULL collate utf8_unicode_ci default '',
         			`pic2` VARCHAR(300) NOT NULL collate utf8_unicode_ci default '',
         			`pic3` VARCHAR(300) NOT NULL collate utf8_unicode_ci default '',
         			`pic4` VARCHAR(300) NOT NULL collate utf8_unicode_ci default '',
-        			`short_info` VARCHAR(300) NOT NULL collate utf8_unicode_ci default '',
-        			`cost` VARCHAR(300) NOT NULL collate utf8_unicode_ci default '',
-        			`place` VARCHAR(300) NOT NULL collate utf8_unicode_ci default '',
-        			`map` VARCHAR(300) NOT NULL collate utf8_unicode_ci default ''
+        			`short_info` VARCHAR(3000) NOT NULL collate utf8_unicode_ci default '',
+        			`cost` VARCHAR(3000) NOT NULL collate utf8_unicode_ci default '',
+        			`place` VARCHAR(3000) NOT NULL collate utf8_unicode_ci default '',
+        			`map` VARCHAR(3000) NOT NULL collate utf8_unicode_ci default ''
         		)";
 				$this->DH->exec($executing);
 			}catch(PDOException $e) {  
@@ -37,8 +36,6 @@ class ModelBaseAdminTownsSights extends ModelBase {
 			}
 		}
 			public function fieldsTable() {
-									$arr1['description']=$this->description;
-									$arr1['name']=$this->named;
 									$arr1['sights_name']=$this->sights_name;
 									$arr1['pic1']=$this->pic1;
 									$arr1['pic2']=$this->pic2;

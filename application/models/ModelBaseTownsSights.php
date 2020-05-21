@@ -1,0 +1,8 @@
+<?
+class ModelBaseTownsSights extends ModelBase {
+
+
+
+
+
+}

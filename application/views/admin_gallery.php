@@ -37,26 +37,31 @@ echo "<table class='blueTable'>
 	   echo "<td>";
 	   echo $movie['images'];
 	   echo "</td>";
-	   echo "<td>";
-	   echo "<div>Удаление</div>";
-	   echo "</td>";
+	   echo "<td><div><form method='post' action='' ><input type='submit' name='delete-first' value='".$movie['id']."'></form>Удалить</div></td>";
 	   echo "</tr>";
 	}
 echo "</tbody>
 	  </table>";	
-$town=$_POST['arr'];
-$submit=$_POST['sub'];
-if(!empty($submit)) {
-	$about=new ModelBaseAdminTownsGallery($delay);
-	$about->images=$town;
-	$about->save();
+	  if (!empty($_POST['delete-first'])) {
+	echo "Обновите страницу. Данные успешно удалены";
+	$button = new ModelBaseAdminTownsGallery($table);
+	$id=$_POST['delete-first'];
+	$select_delete = array(
+    'where' => "id = '$id'" // условие
+);
+	$button->deleteBySelect($select_delete);
+	unset($_POST);
 }
-
 ?>
 <br>
 <br>
 <form method="post" action="" enctype = 'multipart/form-data'>
-	<input type="text" name="arr">
-
+	<input type="file" name="arr-foto">
 	<input type="submit" name="sub">
 </form>
+<?
+include 'form_gallery.php';
+
+?>
+
+

@@ -1,2 +1,2 @@
 <?php
-require '/var/www/walking/dotenv.php';
+require $_SERVER['DOCUMENT_ROOT'].'/dotenv.php';

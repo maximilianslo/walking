@@ -1,3 +1,24 @@
+* {
+	margin: 0;
+}
+a {
+  text-decoration: none !important;
+  color: #000;
+}
+body {
+	background: #fff;
+}
+
+
+@import "files/vars.scss";
+@import "files/mixins.scss";
+@import "files/font-face.scss";
+@import "files/vars.scss";
 @import "files/second.scss";
 @import "files/admin_gallery.scss";
 @import "files/edit_admin_about.scss";
+@import "files/forms.scss";
+@import "files/header.scss";
+@import "files/footer.scss";
+@import "files/sights.scss";
+@import "files/main.scss";
