@@ -2,10 +2,16 @@
 $select = array(
     'where' => 'id > 0', // условие
 );
+include "translit.php";
 
 
 if(!empty($_POST['sub'])) {
-	$save->named=$_POST['town'];
+	$save=new ModelBaseMain($fortable1);
+
+	$result_name=$_POST['town'];
+
+	$save->named=translit($result_name);
+	$save->named_translit=$result_name;
 	$save->save();
 		unset($_POST);
 }

@@ -1,6 +1,7 @@
 <?php
 class ModelBaseMain extends ModelBase {
 	public $named;
+	public $named_translit;
 	public $id;
 
 	public function createTables($classname) {
@@ -9,7 +10,8 @@ class ModelBaseMain extends ModelBase {
 				//общая таблица
 				$executing="CREATE Table IF NOT EXISTS `".$table."` (
 					`id` INT(10) PRIMARY KEY AUTO_INCREMENT,
-					`name` VARCHAR(50) NOT NULL collate utf8_unicode_ci default ''
+					`name` VARCHAR(50) NOT NULL collate utf8_unicode_ci default '',
+					`name_translit` VARCHAR(50) NOT NULL collate utf8_unicode_ci default ''
 			        )";
 				$this->DH->exec($executing);
 				//таблица about
@@ -42,6 +44,9 @@ class ModelBaseMain extends ModelBase {
 			public function fieldsTable() {
 								if(!empty($this->named)) {
 									$arr1['name']=$this->named;
+								}
+								if(!empty($this->named_translit)) {
+									$arr1['name_translit']=$this->named_translit;
 								}
 									return $arr1;
 					}	

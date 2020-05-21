@@ -23,7 +23,7 @@ $all=$show_images->getAllRows();
 foreach ( $all as $movie ) {
 	?>
 		<div class="row">
-		<div class='theme-town'><a href="<?echo '/towns/'.$movie['name']; ?>"><? echo strtoupper($movie['name']); ?></a></div>
+		<div class='theme-town'><a href="<?echo '/towns/'.$movie['name']; ?>"><? echo strtoupper($movie['name_translit']); ?></a></div>
 	  	</div>
 	  <? 
 

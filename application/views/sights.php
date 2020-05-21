@@ -7,15 +7,15 @@ $select_text = array(
 );
 
 
-
 $check=new ModelBaseTownsSights('alltowns',$select);
 if($check->getOneRow()==false) {
 	header("Location: http://".$_SERVER['HTTP_HOST']
 .dirname($_SERVER['PHP_SELF'])
 );
+} else {
+	$name_operation=$check->getAllRows();
+	$result_name=$name_operation[0]['name_translit'];
 }
-
-
 
 $save= new ModelBaseTownsSights('towns_sights',$select);
 if($save->getOneRow()==true) {
@@ -24,7 +24,7 @@ if($save->getOneRow()==true) {
 		?>
 
 <div  class="container">
-	<h1 class="main-text">Достопримечательности города <?echo $name_town.' '; ?></h1>
+	<h1 class="main-text">Достопримечательности города <?echo $result_name.' '; ?></h1>
 	<div class="description">
 
 		<? 
