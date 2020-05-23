@@ -2,13 +2,13 @@
 if(!empty($_POST['sub'])) {
 	$uploaddir = $_SERVER['DOCUMENT_ROOT']."/images/";
 // это папка, в которую будет загружаться картинка
+		$count=0;
 	for($i=0;$i<count($_FILES['arr-foto']['name']);$i++) {
-		if (empty($_FILES['arr-foto']['name'][$i])) {
-			$error[]="Незагруженных файлов - ".$i;
-		}
+
+		if (!empty($_FILES['arr-foto']['name'][$i])) {
 		$apend=date('YmdHis').rand(100,1000).'.jpg'; 
 // это имя, которое будет присвоенно изображению 
-$uploadfile[$i] = "$uploaddir$apend"; 
+$uploadfile[$count] = "$uploaddir$apend"; 
 //в переменную $uploadfile будет входить папка и имя изображения
 
 // В данной строке самое важное - проверяем загружается ли изображение (а может вредоносный код?)
@@ -16,15 +16,15 @@ $uploadfile[$i] = "$uploaddir$apend";
 if(($_FILES['arr-foto']['type'][$i] == 'image/gif' || $_FILES['arr-foto']['type'][$i] == 'image/jpeg' || $_FILES['arr-foto']['type'][$i] == 'image/png') && ($_FILES['arr-foto']['size'][$i] != 0 and $_FILES['arr-foto']['size'][$i]<=5120000)) 
 { 
 // Указываем максимальный вес загружаемого файла. Сейчас до 512 Кб 
-  if (move_uploaded_file($_FILES['arr-foto']['tmp_name'][$i], $uploadfile[$i])) 
+  if (move_uploaded_file($_FILES['arr-foto']['tmp_name'][$i], $uploadfile[$count])) 
    { 
    //Здесь идет процесс загрузки изображения 
-   $size = getimagesize($uploadfile[$i]); 
+   $size = getimagesize($uploadfile[$count]); 
    // с помощью этой функции мы можем получить размер пикселей изображения 
      if ($size[0] < 501 && $size[1]<1501) 
      { 
      // если размер изображения не более 500 пикселей по ширине и не более 1500 по  высоте 
-     echo "Файл загружен. Путь к файлу: <b>http:/yoursite.ru/".$uploadfile[$i]."</b>"; 
+     echo "Файл загружен. Путь к файлу: <b>http:/yoursite.ru/".$uploadfile[$count]."</b>"; 
      } else {
      echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
      // удаление файла 
@@ -35,27 +35,29 @@ if(($_FILES['arr-foto']['type'][$i] == 'image/gif' || $_FILES['arr-foto']['type'
 } else { 
 echo "Размер файла не должен превышать 512Кб";
 } 
+$count++;
 	}
+}
 	for($i=0;$i<count($_POST['arr']);$i++) {
 		if (empty($_POST['arr'][$i])) {
 			$error[]="Незаполненных текстов - ".$i;
 		}
 	}
 
-	if(empty($error)) {	
+	
+	for($j=0;$j<count($uploadfile);$j++) {
+		$k=$j+1;
+		$name_pic='pic'.$k;
+		$save->{$name_pic}=$uploadfile[$j];
+}
+var_dump($_POST['arr']);
 	$save->sights_name=$_POST['arr'][0];
-	$save->pic1=$uploadfile[0];
-	$save->pic2=$uploadfile[1];
-	$save->pic3=$uploadfile[2];
-	$save->pic4=$uploadfile[3];
 	$save->short_info=$_POST['arr'][1];
 	$save->cost=$_POST['arr'][2];
 	$save->place=$_POST['arr'][3];
 	$save->map=$_POST['arr'][4];
 	$save->save();
-	} else {
-			echo "<h1>".end($error)."</h1>";
-	}
+
 	unset($_POST);
 }
 if(!empty($_POST['update_foto'])) {

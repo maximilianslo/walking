@@ -3,9 +3,9 @@ ini_set('display_errors', 1);
     error_reporting(E_ALL);
     echo('foo');
 $url='application/models/admin/ModelUpdate.php';
-require_once '/var/www/walking/application/models/ModelBase.php';
-require_once '/var/www/walking/application/models/admin/ModelUpdate.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/application/models/ModelBase.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/application/models/admin/ModelUpdate.php';
+echo $_POST;
 $parts=explode("_", $_POST['row']);
 if($parts[0]=='sights' or $parts[0]=='short') {
 $town='townssights_'.$parts[2];

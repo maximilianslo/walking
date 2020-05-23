@@ -39,12 +39,11 @@ if($save->getAllRows()==true) {
 echo "<table class='blueTable'>
 <thead>
 <tr>
-<th>SIGHT</th>
-<th>PIC1</th>
-<th>PIC2</th>
-<th>PIC3</th>
-<th>PIC4</th>
-<th>SHORT_INFO</th>
+<th>SIGHT</th>";
+for($k=1;$k<21;$k++) {
+	echo "<th>PIC".$k."</th>";
+}
+echo "<th>SHORT_INFO</th>
 <th>COST</th>
 <th>PLACE</th>
 <th>MAP</th>
@@ -66,10 +65,9 @@ echo "<table class='blueTable'>
 	   	    echo "<form method='post' action='' id='new-foto' enctype = 'multipart/form-data'></form>";
 	   	   echo "<tr>";
 				   echo "<td></td>";
-	   echo "<td><input type='file' name='arr-foto2".$id_num."[]' form='new-foto'></td>";
-	   echo "<td><input type='file' name='arr-foto2".$id_num."[]' form='new-foto'></td>";
-	   echo "<td><input type='file' name='arr-foto2".$id_num."[]' form='new-foto'></td>";
-	   echo "<td><input type='file' name='arr-foto2".$id_num."[]' form='new-foto'></td>";
+	  for($j=0;$j<20;$j++) {
+	  		   echo "<td><input type='file' name='arr-foto2".$id_num."[]' form='new-foto'></td>";
+	  }
 	   echo "<td></td>";
 	   echo "<td></td>";
 	   echo "<td></td>";
@@ -104,7 +102,23 @@ $towns_photos = array(
 				'Прикрепите фотографию 1',
 				'Прикрепите фотографию 2',
 				'Прикрепите фотографию 3',
-				'Прикрепите фотографию 4'
+				'Прикрепите фотографию 4',
+				'Прикрепите фотографию 5',
+				'Прикрепите фотографию 6',
+				'Прикрепите фотографию 7',
+				'Прикрепите фотографию 8',
+				'Прикрепите фотографию 9',
+				'Прикрепите фотографию 10',
+				'Прикрепите фотографию 11',
+				'Прикрепите фотографию 12',
+				'Прикрепите фотографию 13',
+				'Прикрепите фотографию 14',
+				'Прикрепите фотографию 15',
+				'Прикрепите фотографию 16',
+				'Прикрепите фотографию 17',
+				'Прикрепите фотографию 18',
+				'Прикрепите фотографию 19',
+				'Прикрепите фотографию 20'
 				);
 
 
@@ -122,7 +136,7 @@ $towns_photos = array(
 	</div>
 	<div class="form-about">
 <?
-	for($i=0;$i<4;$i++) {
+	for($i=0;$i<20;$i++) {
 	echo '<div class="part-form-about">
 	<h3>'.$towns_photos[$i].'</h3>
 	<input  class="form-control" type="file" name="arr-foto[]">
@@ -159,7 +173,23 @@ $towns_photos = array(
 				'Прикрепите фотографию 1',
 				'Прикрепите фотографию 2',
 				'Прикрепите фотографию 3',
-				'Прикрепите фотографию 4'
+				'Прикрепите фотографию 4',
+				'Прикрепите фотографию 5',
+				'Прикрепите фотографию 6',
+				'Прикрепите фотографию 7',
+				'Прикрепите фотографию 8',
+				'Прикрепите фотографию 9',
+				'Прикрепите фотографию 10',
+				'Прикрепите фотографию 11',
+				'Прикрепите фотографию 12',
+				'Прикрепите фотографию 13',
+				'Прикрепите фотографию 14',
+				'Прикрепите фотографию 15',
+				'Прикрепите фотографию 16',
+				'Прикрепите фотографию 17',
+				'Прикрепите фотографию 18',
+				'Прикрепите фотографию 19',
+				'Прикрепите фотографию 20'
 				);
 
 
@@ -177,7 +207,7 @@ $towns_photos = array(
 	</div>
 	<div class="form-about">
 <?
-	for($i=0;$i<4;$i++) {
+	for($i=0;$i<20;$i++) {
 	echo '<div class="part-form-about">
 	<h3>'.$towns_photos[$i].'</h3>
 	<input  class="form-control" type="file" name="arr-foto[]">

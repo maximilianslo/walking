@@ -9,7 +9,7 @@ $(function(){
  newVal = $(this).text();
  if(newVal != oldVal){
  $.ajax({
- url: "http://walking.site/application/views/edit_admin_sights.php",
+ url: "/application/views/edit_admin_sights.php",
  type: 'POST',
  dataType: 'json',
  data: {new_val: newVal, id: id, row: idelem},

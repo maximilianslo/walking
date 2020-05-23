@@ -50,10 +50,12 @@ for($i=0;$i<count($all_content);$i++) {
 <div class="mini-gallery">
 <? 
 
-	for($j=1;$j<5;$j++) {
+	for($j=1;$j<20;$j++) {
 		$name_image='pic'.$j;
+		if(!empty($all_content[$i][$name_image])) {
 $link_image=str_replace($_SERVER['DOCUMENT_ROOT'], '', $all_content[$i][$name_image]);
 echo "<img class='block-photos' src=".$link_image.">";
+}
 }
 ?>
 </div>
