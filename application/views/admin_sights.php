@@ -222,7 +222,7 @@ $towns_photos = array(
 
 
 <? } 
-require_once('/var/www/walking/application/models/admin/ModelBaseTownsSightsHelp.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/application/models/admin/ModelBaseTownsSightsHelp.php';
 $save_description= new ModelBaseAdminTownsSightsHelp('towns_sights',$select);
 
 if($save_description->getOneRow()==true) {

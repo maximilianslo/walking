@@ -1,5 +1,5 @@
 <?php
-require '/var/www/walking/vendor/autoload.php';
+require $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
 
 $factory = new Dotenv\Environment\DotenvFactory([
         new Dotenv\Environment\Adapter\EnvConstAdapter(),
